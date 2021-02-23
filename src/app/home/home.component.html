@@ -1,0 +1,16 @@
+<h1>{{ title }}</h1>
+
+<p>home works!</p>
+<h3>{{ message }}</h3>
+<div class="home-container" [ngStyle]="{'background-color': backgroundColor, 'color': color, 'width.%': minHeight }" >
+  <input id="message" type="text" [placeholder]="getPlaceHolder()" [(ngModel)]="message" (keyup)="validateMessage()">
+  <button (click)="onClickSendMessageButton()">Send message</button>
+  <button (click)="togglePartyMode()">Party Mode</button>
+  <p *ngIf="message.length > 7">DANGER: This is message is too large ! D: !!!</p>
+
+
+  <p (copy)="onCopyImportantMessage()">This is an important message</p>
+
+  <input type="text" [value]="count" (keyup)="increaseCount($event)">
+</div>
+
