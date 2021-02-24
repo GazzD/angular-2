@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ShoppingItem } from '../models/shopping-item';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HomeComponent implements OnInit {
 
@@ -16,7 +18,11 @@ export class HomeComponent implements OnInit {
   letterSize: number = 10;
   message2: string = '';
 
-  shoppingList: string[] = ['milk', 'eggs', 'cookies'];
+  shoppingList: ShoppingItem[] = [
+    new ShoppingItem("milk", 1, 0.56, false),
+    new ShoppingItem("cookies", 200, 2, false),
+    new ShoppingItem("cheese", 10, 10, false)
+  ];
 
   placeHolderText: string = 'AAAAAAAAAa';
 
@@ -25,6 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.shoppingList.push(new ShoppingItem("jam", 10, 10, false));
   }
 
   getPlaceHolder(): string {
@@ -69,6 +76,10 @@ export class HomeComponent implements OnInit {
   increaseSize(): void {
     this.letterSize++;
     console.log(this.letterSize);
+  }
+
+  printProduct(itemName: string): void {
+    alert(itemName);
   }
 
 }
