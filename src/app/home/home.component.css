@@ -2,3 +2,15 @@
   background-color: antiquewhite;
   color:blueviolet;
 }
+
+.row {
+  border: 1px solid red;
+}
+
+.row-even {
+  background-color: aquamarine;
+}
+
+.row-odd {
+  background-color: yellowgreen;
+}

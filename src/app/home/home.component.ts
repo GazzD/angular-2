@@ -7,16 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  title: string = 'Toolbox';
+  title: string;
   message: string = 'Defa ';
   backgroundColor: string = this.message.length > 7 ? 'darksalmon' : '#CCC';
   color: string = this.message.length > 7 ? 'ghostwhite' : 'blueviolet'
   count: number = 0;
   minHeight: number = 190;
+  letterSize: number = 10;
+  message2: string = '';
+
+  shoppingList: string[] = ['milk', 'eggs', 'cookies'];
 
   placeHolderText: string = 'AAAAAAAAAa';
 
-  constructor() { }
+  constructor() {
+    this.title = 'Toolbox';
+  }
 
   ngOnInit(): void {
   }
@@ -54,6 +60,15 @@ export class HomeComponent implements OnInit {
       this.minHeight = 190;
     }
 
+  }
+
+  getPlaceHolder2(): string {
+    return "This placeholder text";
+  }
+
+  increaseSize(): void {
+    this.letterSize++;
+    console.log(this.letterSize);
   }
 
 }
