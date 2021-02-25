@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Fan } from '../models/fan';
+import { RandomUserService } from '../services/random-user.service';
 
 @Component({
   selector: 'app-teams',
@@ -17,18 +18,21 @@ export class TeamsComponent implements OnInit {
 
   selectedTeam: string = 'madrid';
 
-  constructor() { }
+  constructor(
+    private randomUserService: RandomUserService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  createNewFan(): void {
-    if (this.selectedTeam === 'madrid') {
-      this.madridFanList.push(new Fan(this.fanName, this.fanAge, this.fanCountry));
-    } else {
-      this.barcelonaFanList.push(new Fan(this.fanName, this.fanAge, this.fanCountry));
-    }
+  createNewFan(photo?: string): void {
+    const fan: Fan = new Fan(this.fanName, this.fanAge, this.fanCountry, photo);
 
+    if (this.selectedTeam === 'madrid') {
+      this.madridFanList.push(fan);
+    } else {
+      this.barcelonaFanList.push(fan);
+    }
     this.fanName = '';
     this.fanAge = 15;
     this.fanCountry = '';
@@ -53,5 +57,35 @@ export class TeamsComponent implements OnInit {
       this.madridFanList.push(fans[0]);
     }
   }
+
+  addRandomFan(team: string) {
+    this.randomUserService.getRandomUser().subscribe(dataResult => {
+      console.log('Dentro del subscribe');
+      this.selectedTeam = team;
+      this.fanName = dataResult.results[0].name.first + ' ' + dataResult.results[0].name.last;
+      this.fanCountry = dataResult.results[0].location.country;
+      this.fanAge = dataResult.results[0].dob.age;
+      this.createNewFan(dataResult.results[0].picture.large);
+    });
+    console.log('Fuera del subscribe');
+  }
+
+  // results: [
+  //   {
+  //     name: {
+  //       first: string,
+  //       last: string
+  //     },
+  //     location: {
+  //         country: string
+  //     },
+  //     dob: {
+  //         age: number
+  //     },
+  //     picture: {
+  //         large: string
+  //     }
+  //   }
+  // ]
 
 }

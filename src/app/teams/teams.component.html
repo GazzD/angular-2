@@ -10,7 +10,7 @@
 <div class="container">
   <div>
     <h3>Real Madrid CF</h3>
-
+    <button (click)="addRandomFan('madrid')">Add Random Fan</button>
     <app-fan-card *ngFor="let fan of madridFanList; let i = index" [fan]="fan" [fanIndex]="i" (deleteFanEvent)="delete($event, 'madrid')" (changeTeamEvent)="changeTeam($event, 'madrid')"></app-fan-card>
     <!-- <div *ngFor="let fan of madridFanList; let i = index" [ngClass]="{ 'row-even': i%2 === 0, 'row-odd': i%2 !== 0 }">
       <img [src]="fan.photo">
@@ -21,6 +21,7 @@
   </div>
   <div>
     <h3>Barcelona FC</h3>
+    <button (click)="addRandomFan('barcelona')">Add Random Fan</button>
     <app-fan-card *ngFor="let fan of barcelonaFanList; let i = index" [fan]="fan" [fanIndex]="i" (deleteFanEvent)="delete($event, 'barcelona')" (changeTeamEvent)="changeTeam($event, 'barcelona')"></app-fan-card>
     <!-- <div *ngFor="let fan of barcelonaFanList; let i = index" [ngClass]="{ 'row-even': i%2 === 0, 'row-odd': i%2 !== 0 }">
       <img [src]="fan.photo">
