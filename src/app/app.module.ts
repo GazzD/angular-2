@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MiniHomeComponent } from './mini-home/mini-home.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { TeamsComponent } from './teams/teams.component';
+import { FanCardComponent } from './fan-card/fan-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MiniHomeComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    TeamsComponent,
+    FanCardComponent
   ],
   imports: [
     BrowserModule,

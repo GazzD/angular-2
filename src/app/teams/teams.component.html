@@ -1,0 +1,32 @@
+<h1>Super TEAM DB</h1>
+<input type="text" [(ngModel)]="fanName">
+<input type="text" [(ngModel)]="fanAge">
+<input type="text" [(ngModel)]="fanCountry">
+<select [(ngModel)]="selectedTeam">
+  <option value="madrid">Madrid CF</option>
+  <option value="barcelona">Barcelona FC</option>
+</select>
+<button (click)="createNewFan()">Add</button>
+<div class="container">
+  <div>
+    <h3>Real Madrid CF</h3>
+
+    <app-fan-card *ngFor="let fan of madridFanList; let i = index" [fan]="fan" [fanIndex]="i" (deleteFanEvent)="delete($event, 'madrid')" (changeTeamEvent)="changeTeam($event, 'madrid')"></app-fan-card>
+    <!-- <div *ngFor="let fan of madridFanList; let i = index" [ngClass]="{ 'row-even': i%2 === 0, 'row-odd': i%2 !== 0 }">
+      <img [src]="fan.photo">
+      <p>{{ i+1 }}.- {{ fan.name }} ({{ fan.country }} {{ fan.age }})</p>
+      <button (click)="delete(i, 'madrid')">Delete</button>
+      <button (click)="changeTeam(i, 'madrid')">Change team</button>
+    </div> -->
+  </div>
+  <div>
+    <h3>Barcelona FC</h3>
+    <app-fan-card *ngFor="let fan of barcelonaFanList; let i = index" [fan]="fan" [fanIndex]="i" (deleteFanEvent)="delete($event, 'barcelona')" (changeTeamEvent)="changeTeam($event, 'barcelona')"></app-fan-card>
+    <!-- <div *ngFor="let fan of barcelonaFanList; let i = index" [ngClass]="{ 'row-even': i%2 === 0, 'row-odd': i%2 !== 0 }">
+      <img [src]="fan.photo">
+      <p>{{ i+1 }}.- {{ fan.name }} ({{ fan.country }} {{ fan.age }})</p>
+      <button (click)="delete(i, 'barcelona')">Delete</button>
+      <button (click)="changeTeam(i, 'barcelona')">Change team</button>
+    </div> -->
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div [ngClass]="{ 'row-even': index%2 === 0, 'row-odd': index%2 !== 0 }">
+  <img [src]="fan.photo">
+  <p>{{ index+1 }}.- {{ fan.name }} ({{ fan.country }} {{ fan.age }})</p>
+  <button (click)="delete(index)">Delete</button>
+  <button (click)="toUppercase()" >To UpperCase</button>
+  <button (click)="changeTeam(index)">Change team</button>
+</div>
